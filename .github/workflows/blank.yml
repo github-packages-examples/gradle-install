@@ -48,14 +48,14 @@ jobs:
                   name = "remote"
                   url = uri("https://maven.pkg.github.com/${{ github.repository_owner }}/maven-publish")
                   credentials {
-                      username = System.getenv("USERNAME")
-                      password = System.getenv("TOKEN")
+                      username = "token"
+                      password = System.getenv("GITHUB_TOKEN")
                   }
               }
           }
 
-          group = "org.test.consume"
-          version = "1.0-SNAPSHOT"
+          group = "${{ env.GROUP_ID }}"
+          version = "${{ env.VERSION }}"
 
           dependencies {
               api("org.apache.commons:commons-math3:3.6.1")
@@ -72,5 +72,4 @@ jobs:
 
       - run: gradle build -b plain.gradle.kts
         env:
-          USERNAME: token
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.READ_PACKAGES_TOKEN }}
