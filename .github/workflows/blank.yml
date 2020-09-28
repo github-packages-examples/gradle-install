@@ -66,6 +66,12 @@ jobs:
           }
           EOM
 
+      - name: Add settings.gradle.kts
+        run: |
+          cat > settings.gradle.kts << EOM
+          rootProject.name = "${{ env.ARTIFACT_ID }}"
+          EOM
+
       - name: Build app
         run: gradle build
         env:
