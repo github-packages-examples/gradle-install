@@ -2,12 +2,38 @@
 on:
   push:
 
+env:
+  GROUP_ID: com.octokat.app
+  ARTIFACT_ID: install-octokat-app
+  VERSION: 1.0-SNAPSHOT
+  CLASS_NAME: InstallApp
+  TARGET_GROUP_ID: com.octokat.app
+  TARGET_ARTIFACT_ID: octokat-app
+  TARGET_VERSION: 1.0-SNAPSHOT
+  TARGET_CLASS_NAME: PublishApp
+
 jobs:
   install:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Add ${{ env.CLASS_NAME }}.java file
+        run: |
+          SOURCE_PATH=src/main/java/$(echo ${{ env.GROUP_ID }} | tr . /)
+          mkdir -p $SOURCE_PATH
+          cat <<- END > $SOURCE_PATH/${{ env.CLASS_NAME }}.java
+          package ${{ env.GROUP_ID }};
+          import ${{ env.TARGET_GROUP_ID }}.${{ env.TARGET_CLASS_NAME }};
+          public class ${{ env.CLASS_NAME }}
+          {
+              public static void main( String[] args )
+              {
+                  ${{ env.TARGET_CLASS_NAME }}.main( new String[0] );
+              }
+          }
+          END
 
       - name: Add gradle.kts
         run: |
