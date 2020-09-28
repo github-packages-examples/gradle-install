@@ -75,4 +75,4 @@ jobs:
 
       - run: gradle build -b plain.gradle.kts
         env:
-          TOKEN: ${{ secrets.READ_PACKAGES_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.READ_PACKAGES_TOKEN }}
