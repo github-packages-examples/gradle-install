@@ -62,7 +62,6 @@ jobs:
           version = "${{ env.VERSION }}"
 
           dependencies {
-              implementation("com.google.guava:guava:28.0-jre")
               compile("${{ env.TARGET_GROUP_ID }}:${{ env.TARGET_ARTIFACT_ID }}:${{ env.TARGET_VERSION }}")
           }
           EOM
