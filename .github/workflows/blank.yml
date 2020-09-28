@@ -39,7 +39,7 @@ jobs:
         run: |
           cat > plain.gradle.kts << EOM
           plugins {
-              \`application\`
+              application
           }
 
           application {
