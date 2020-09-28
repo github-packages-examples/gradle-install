@@ -42,6 +42,10 @@ jobs:
               \`application\`
           }
 
+          application {
+              mainClass.set("${{ env.GROUP_ID }}.${{ env.CLASS_NAME }}")
+          }
+
           repositories {
               jcenter()
               maven {
