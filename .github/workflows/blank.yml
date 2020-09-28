@@ -35,9 +35,9 @@ jobs:
           }
           END
 
-      - name: Add gradle.kts
+      - name: Add build.gradle.kts
         run: |
-          cat > plain.gradle.kts << EOM
+          cat > build.gradle.kts << EOM
           plugins {
               application
           }
@@ -68,7 +68,7 @@ jobs:
           EOM
 
       - name: Build app
-        run: gradle build -b plain.gradle.kts
+        run: gradle build
         env:
           GITHUB_TOKEN: ${{ secrets.READ_PACKAGES_TOKEN }}
 
