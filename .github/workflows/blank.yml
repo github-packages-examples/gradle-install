@@ -9,9 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Add pom.xml with dependency
+      - name: Add gradle.kts
         run: |
-          cat > gradle.kts << EOM
+          cat > plain.gradle.kts << EOM
           plugins {
               `java-library`
           }
@@ -44,7 +44,7 @@ jobs:
           }
           EOM
 
-      - run: gradle build -b gradle.kts
+      - run: gradle build -b plain.gradle.kts
         env:
           USERNAME: token
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
