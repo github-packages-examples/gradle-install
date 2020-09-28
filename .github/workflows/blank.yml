@@ -43,7 +43,7 @@ jobs:
           }
 
           application {
-              mainClass.set("${{ env.GROUP_ID }}.${{ env.CLASS_NAME }}")
+              mainClassName = "${{ env.GROUP_ID }}.${{ env.CLASS_NAME }}" 
           }
 
           repositories {
