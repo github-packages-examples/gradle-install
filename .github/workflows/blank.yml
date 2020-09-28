@@ -67,6 +67,10 @@ jobs:
           }
           EOM
 
-      - run: gradle build -b plain.gradle.kts
+      - name: Build app
+        run: gradle build -b plain.gradle.kts
         env:
           GITHUB_TOKEN: ${{ secrets.READ_PACKAGES_TOKEN }}
+
+      - name: Run app
+        run: gradle run
