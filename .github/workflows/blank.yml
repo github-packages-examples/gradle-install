@@ -59,13 +59,9 @@ jobs:
 
           dependencies {
               api("org.apache.commons:commons-math3:3.6.1")
-
               implementation("com.google.guava:guava:28.0-jre")
-
               testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
-
               testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.1")
-
               compile("${{ env.TARGET_GROUP_ID }}:${{ env.TARGET_ARTIFACT_ID }}:${{ env.TARGET_VERSION }}")
           }
 
