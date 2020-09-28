@@ -38,6 +38,9 @@ jobs:
       - name: Add build.gradle.kts
         run: |
           cat > build.gradle.kts << EOM
+          group = "${{ env.GROUP_ID }}"
+          version = "${{ env.VERSION }}"
+
           plugins {
               application
           }
@@ -57,9 +60,6 @@ jobs:
                   }
               }
           }
-
-          group = "${{ env.GROUP_ID }}"
-          version = "${{ env.VERSION }}"
 
           dependencies {
               compile("${{ env.TARGET_GROUP_ID }}:${{ env.TARGET_ARTIFACT_ID }}:${{ env.TARGET_VERSION }}")
