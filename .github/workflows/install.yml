@@ -21,8 +21,6 @@ jobs:
 
       - name: Build app
         run: gradle build
-        env:
-          GITHUB_TOKEN: ${{ secrets.READ_PACKAGES_TOKEN }}
 
       - name: Run app
         run: gradle run
