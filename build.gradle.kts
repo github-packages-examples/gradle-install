@@ -10,7 +10,7 @@ repositories {
     jcenter()
     maven {
         name = "remote"
-        url = uri("https://maven.pkg.github.com/${{ github.repository_owner }}/maven-publish")
+        url = uri("https://maven.pkg.github.com/github-packages-examples/maven-publish")
         credentials {
             username = "token"
             password = System.getenv("GITHUB_TOKEN")
