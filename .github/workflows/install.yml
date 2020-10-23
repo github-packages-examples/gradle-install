@@ -13,12 +13,24 @@ env:
   TARGET_CLASS_NAME: PublishApp
 
 jobs:
-  install:
+  checkout-and-install:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
+      - name: Build app
+        run: gradle build
+        env:
+          GITHUB_TOKEN: ${{ secrets.READ_PACKAGES_TOKEN }}
+
+      - name: Run app
+        run: gradle run
+
+  create-and-install:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Add ${{ env.CLASS_NAME }}.java file
         run: |
           SOURCE_PATH=src/main/java/$(echo ${{ env.GROUP_ID }} | tr . /)
