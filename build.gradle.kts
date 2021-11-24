@@ -2,6 +2,7 @@ group = "com.octokat.app"
 version = "1.0-SNAPSHOT"
 plugins {
     application
+    java
 }
 application {
     mainClass.set("com.octokat.app.InstallApp")
