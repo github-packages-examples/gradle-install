@@ -54,6 +54,7 @@ jobs:
 
           plugins {
               application
+              java
           }
 
           application {
